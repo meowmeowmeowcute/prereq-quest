@@ -40,9 +40,13 @@ else
 fi
 
 if command -v janet >/dev/null 2>&1; then
-  report "janet" "OK" ""
+    report "janet" "OK" ""
 else
-  report "janet" "MISSING" "Optional locally: you can also run the program via Docker (Mission 05). To install: https://janet-lang.org/docs/index.html"
+    if command -v docker >/dev/null 2>&1 && docker info >/dev/null 2>&1; then
+        report "janet" "MISSING" "Janet is optional locally. Docker is available, so you can run it through Mission 05. To install Janet: https://janet-lang.org/docs/index.html"
+    else
+        report "janet" "MISSING" "Janet is not installed. Install Janet locally, install/start Docker for Mission 05, or push your changes and let GitHub Actions run the tests. Janet: https://janet-lang.org/docs/index.html"
+    fi
 fi
 
 if [ -n "${BASH_VERSION:-}" ]; then
