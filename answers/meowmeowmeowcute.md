@@ -53,21 +53,25 @@ Command I used:grep -oi "error" server.log | wc -l
 
 ## Mission 03 — SSH
 
-SSH token:
+SSH token:FLAG{fe322c8dc745}
 
-Command I used:
+Command I used:ssh -i "missions\03-ssh\knock knock" flag@217.142.229.247
 
 ## Mission 04 — Debug
 
 What was wrong:
+The `the-answer` function added 1 to the base value 40, so it returned 41 instead of the expected 42.
 
 What I changed:
+I changed the addition in `the-answer` from 1 to 2, so the function now returns 42.
 
 ## Mission 05 — Docker
 
 What was wrong:
+The Dockerfile copied main.janet to /app/main.janet, but the working directory was /quest and CMD tried to run main.janet from there.
 
 What I changed:
+I changed the COPY destination to /quest/main.janet so it matches the WORKDIR and CMD path.
 
 ## Mission 06 — Improve something
 
